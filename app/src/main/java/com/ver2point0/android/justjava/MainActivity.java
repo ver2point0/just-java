@@ -20,7 +20,7 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(10000);
+        display((100 * 3) / (2));
     }
 
     /**
