@@ -28,6 +28,22 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
+     * This method is called when the order button is clicked.
+     */
+    public void increment(View view) {
+        int incrementQuantity = 3;
+        display(incrementQuantity);
+    }
+
+    /**
+     * This method is called when the order button is clicked.
+     */
+    public void decrement(View view) {
+        int decrementQuantity = 1;
+        display(decrementQuantity);
+    }
+
+    /**
      * This method displays the given quantity value on the screen.
      */
     private void display(int number) {
