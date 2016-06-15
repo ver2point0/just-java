@@ -31,7 +31,8 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void increment(View view) {
-        int incrementQuantity = 3;
+        int incrementQuantity = 2;
+        incrementQuantity = 3;
         display(incrementQuantity);
     }
 
@@ -39,7 +40,8 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void decrement(View view) {
-        int decrementQuantity = 1;
+        int decrementQuantity = 2;
+        decrementQuantity = 1;
         display(decrementQuantity);
     }
 
