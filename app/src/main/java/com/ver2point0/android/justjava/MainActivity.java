@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
      */
     public void increment(View view) {
         int incrementQuantity = 2;
-        incrementQuantity = 3;
+        incrementQuantity += 1;
         display(incrementQuantity);
     }
 
