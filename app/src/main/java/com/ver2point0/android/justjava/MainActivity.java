@@ -12,6 +12,7 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends ActionBarActivity {
 
+    int quantity = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +32,16 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void increment(View view) {
-        int incrementQuantity = 2;
-        incrementQuantity += 1;
-        display(incrementQuantity);
+        quantity += 1;
+        display(quantity);
     }
 
     /**
      * This method is called when the order button is clicked.
      */
     public void decrement(View view) {
-        int decrementQuantity = 2;
-        decrementQuantity -= 1;
-        display(decrementQuantity);
+        quantity -= 1;
+        display(quantity);
     }
 
     /**
