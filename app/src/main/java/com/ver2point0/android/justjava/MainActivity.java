@@ -23,8 +23,8 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String priceMessage = "Free";
-        displayMessage(priceMessage);
+        String myMessage = "I am string";
+        displayMessage(myMessage);
     }
 
     /**
