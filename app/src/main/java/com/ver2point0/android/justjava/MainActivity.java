@@ -27,6 +27,14 @@ public class MainActivity extends ActionBarActivity {
         String myMessage = "Total: $" + price;
         myMessage = myMessage + "\nThank you!";
         displayMessage(myMessage);
+        calculatePrice();
+    }
+
+    /**
+     * Calculates the price of the order.
+     */
+    private void calculatePrice() {
+        int price = quantity * 5;
     }
 
     /**
