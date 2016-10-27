@@ -25,10 +25,7 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        int price = calculatePrice();
-        String myMessage = "Total: $" + price;
-        myMessage = myMessage + "\nThank you!";
-        displayMessage(myMessage);
+        displayMessage(createOrderSummary(calculatePrice()));
     }
 
     /**
@@ -36,6 +33,16 @@ public class MainActivity extends ActionBarActivity {
      */
     private int calculatePrice() {
         return quantity * pricePerCup;
+    }
+
+    /**
+     * Displays the summary of the order.
+     */
+    private String createOrderSummary(int orderPrice) {
+        return "Name: The Coffee" +
+                "\nQuantity: " + quantity +
+                "\nTotal: $" + orderPrice +
+                "\nThank you!";
     }
 
     /**
