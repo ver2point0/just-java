@@ -7,4 +7,6 @@
     <string name="price_per_coffee">$10</string>
     <string name="plus_button">+</string>
     <string name="minus_button">-</string>
+    <string name="toppings">Toppings</string>
+    <string name="whipped_cream">Whipped cream</string>
 </resources>
