@@ -26,7 +26,9 @@ public class MainActivity extends ActionBarActivity {
     public void submitOrder(View view) {
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean whippedCreamState = whippedCreamCheckBox.isChecked();
-        displayMessage(createOrderSummary(calculatePrice(), whippedCreamState));
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+        boolean chocolateState = chocolateCheckBox.isChecked();
+        displayMessage(createOrderSummary(calculatePrice(), whippedCreamState, chocolateState));
     }
 
     /**
@@ -39,9 +41,10 @@ public class MainActivity extends ActionBarActivity {
     /**
      * Displays the summary of the order.
      */
-    private String createOrderSummary(int orderPrice, boolean hasWhippedCream) {
+    private String createOrderSummary(int orderPrice, boolean hasWhippedCream, boolean hasChocolate) {
         return "Name: The Coffee" +
                 "\nAdd whipped cream? " + hasWhippedCream +
+                "\nAdd chocolate? " + hasChocolate +
                 "\nQuantity: " + quantity +
                 "\nTotal: $" + orderPrice +
                 "\nThank you!";
