@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -24,11 +25,20 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+
+        // get customer's name
+        EditText nameEditText = (EditText) findViewById(R.id.name_field);
+        String nameInputText = nameEditText.getText().toString();
+
+        // figure out if user wants whipped cream
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean whippedCreamState = whippedCreamCheckBox.isChecked();
+
+        // figure out if user want chocolate
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean chocolateState = chocolateCheckBox.isChecked();
-        displayMessage(createOrderSummary(calculatePrice(), whippedCreamState, chocolateState));
+
+        displayMessage(createOrderSummary(nameInputText, whippedCreamState, chocolateState, calculatePrice()));
     }
 
     /**
@@ -41,8 +51,8 @@ public class MainActivity extends ActionBarActivity {
     /**
      * Displays the summary of the order.
      */
-    private String createOrderSummary(int orderPrice, boolean hasWhippedCream, boolean hasChocolate) {
-        return "Name: The Coffee" +
+    private String createOrderSummary(String customerName, boolean hasWhippedCream, boolean hasChocolate, int orderPrice) {
+        return "Name: " + customerName +
                 "\nAdd whipped cream? " + hasWhippedCream +
                 "\nAdd chocolate? " + hasChocolate +
                 "\nQuantity: " + quantity +
