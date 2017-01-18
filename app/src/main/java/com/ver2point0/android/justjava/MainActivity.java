@@ -14,6 +14,8 @@ public class MainActivity extends ActionBarActivity {
 
     int quantity = 2;
     int pricePerCup = 5;
+    int whippedCreamPrice = 1;
+    int chocolatePrice = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +40,25 @@ public class MainActivity extends ActionBarActivity {
         CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean chocolateState = chocolateCheckBox.isChecked();
 
-        displayMessage(createOrderSummary(nameInputText, whippedCreamState, chocolateState, calculatePrice()));
+        displayMessage(createOrderSummary(nameInputText, whippedCreamState, chocolateState, calculatePrice(whippedCreamState, chocolateState)));
     }
 
     /**
      * Calculates the price of the order.
      */
-    private int calculatePrice() {
-        return quantity * pricePerCup;
+    private int calculatePrice(boolean whippedCreamAdded, boolean chocolateAdded) {
+        // add $1 if user wants whipped cream
+        if (whippedCreamAdded) {
+            pricePerCup += whippedCreamPrice;
+        }
+
+        // add $2 if user wants chocolate
+        if (chocolateAdded) {
+            pricePerCup += chocolatePrice;
+        }
+
+        // calculate total order price by multiplying by quantity
+        return pricePerCup * quantity;
     }
 
     /**
