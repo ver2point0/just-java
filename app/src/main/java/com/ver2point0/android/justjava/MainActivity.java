@@ -6,13 +6,14 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends ActionBarActivity {
 
-    int quantity = 2;
+    int quantity = 1;
     int pricePerCup = 5;
     int whippedCreamPrice = 1;
     int chocolatePrice = 2;
@@ -74,11 +75,23 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void increment(View view) {
+        if (quantity == 100) {
+            // show error message a toast
+            Toast.makeText(this, "You can't order more than 100 cups of coffee", Toast.LENGTH_SHORT).show();
+            // exit method early because there is nothing to do
+            return;
+        }
         quantity += 1;
         displayQuantity(quantity);
     }
 
     public void decrement(View view) {
+        if (quantity == 1) {
+            // show error message a toast
+            Toast.makeText(this, "You can't order less than 1 cup of coffee", Toast.LENGTH_SHORT).show();
+            // exit method early because there is nothing to do
+            return;
+        }
         quantity -= 1;
         displayQuantity(quantity);
     }
