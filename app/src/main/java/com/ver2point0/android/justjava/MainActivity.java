@@ -10,15 +10,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.ver2point0.android.justjava.R.string.quantity;
+
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends ActionBarActivity {
 
-    int quantity = 1;
+    int initialQuantity = 1;
     int pricePerCup = 5;
     int whippedCreamPrice = 1;
     int chocolatePrice = 2;
+    int maxQuantity = 100;
+    int minQuantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +47,8 @@ public class MainActivity extends ActionBarActivity {
         boolean chocolateState = chocolateCheckBox.isChecked();
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + nameInputText);
+        intent.setData(Uri.parse(getString(R.string.mail_to))); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_for) + nameInputText);
         intent.putExtra(Intent.EXTRA_TEXT, createOrderSummary(nameInputText, whippedCreamState, chocolateState, calculatePrice(whippedCreamState, chocolateState)));
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -66,41 +70,41 @@ public class MainActivity extends ActionBarActivity {
         }
 
         // calculate total order price by multiplying by quantity
-        return pricePerCup * quantity;
+        return pricePerCup * initialQuantity;
     }
 
     /**
      * Displays the summary of the order.
      */
     private String createOrderSummary(String customerName, boolean hasWhippedCream, boolean hasChocolate, int orderPrice) {
-        return "Name: " + customerName +
-                "\nAdd whipped cream? " + hasWhippedCream +
-                "\nAdd chocolate? " + hasChocolate +
-                "\nQuantity: " + quantity +
-                "\nTotal: $" + orderPrice +
-                "\nThank you!";
+        return getString(R.string.name) + customerName +
+                getString(R.string.add_whipped_cream) + hasWhippedCream +
+                getString(R.string.add_chocolate) + hasChocolate +
+                getString(R.string.number_of_cups) + quantity +
+                getString(R.string.total_price) + orderPrice +
+                getString(R.string.thank_you);
     }
 
     public void increment(View view) {
-        if (quantity == 100) {
+        if (initialQuantity == maxQuantity) {
             // show error message a toast
-            Toast.makeText(this, "You can't order more than 100 cups of coffee", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.more_than_100_cups, Toast.LENGTH_SHORT).show();
             // exit method early because there is nothing to do
             return;
         }
-        quantity += 1;
-        displayQuantity(quantity);
+        initialQuantity += 1;
+        displayQuantity(initialQuantity);
     }
 
     public void decrement(View view) {
-        if (quantity == 1) {
+        if (initialQuantity == minQuantity) {
             // show error message a toast
-            Toast.makeText(this, "You can't order less than 1 cup of coffee", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.less_than_1_cup, Toast.LENGTH_SHORT).show();
             // exit method early because there is nothing to do
             return;
         }
-        quantity -= 1;
-        displayQuantity(quantity);
+        initialQuantity -= 1;
+        displayQuantity(initialQuantity);
     }
 
     /**

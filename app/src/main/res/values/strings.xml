@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Just Java</string>
     <string name="quantity">Quantity</string>
@@ -8,5 +9,16 @@
     <string name="toppings">Toppings</string>
     <string name="whipped_cream">Whipped cream</string>
     <string name="chocolate">Chocolate</string>
-    <string name="name">Enter your name</string>
+    <string name="enter_name">Enter your name</string>
+    <string name="less_than_1_cup">You cannot order less than 1 cup of coffee</string>
+    <string name="more_than_100_cups">You cannot order more than 100 cups of coffee</string>
+    <string name="name">Name</string>
+    <string name="add_whipped_cream">Add whipped cream? </string>
+    <string name="add_chocolate">Add chocolate? </string>
+    <string name="number_of_cups">Quantity </string>
+    <string name="total_price">Total $</string>
+    <string name="thank_you">Thank you!</string>
+    <string name="order_for">Just Java order for </string>
+    <string name="mail_to">mailto:</string>
+    <string name="initial_quantity_value">1</string>
 </resources>
